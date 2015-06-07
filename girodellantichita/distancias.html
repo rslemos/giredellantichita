@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Viagem à Itália em agosto/2015</title>
+		<script id="jquery" type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script id="googlemaps" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Do4ZMc5ZmwqE93ZWin8ONlJvkQ_-anM"></script>
+
+		<script id="suncalc" type="text/javascript" src="https://rawgit.com/mourner/suncalc/master/suncalc.js"></script>
+
+		<script id="tour" type="text/javascript" src="tour.js"></script>
+		<script id="constantes" type="text/javascript" src="constantes.js"></script>
+		<script id="roteiros" type="text/javascript" src="roteiros.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	
+	<body>
+		<h1>Distâncias e rotas</h1>
+
+		<table id="distancias">
+		</table>
+		<button name="Refresh" onclick="javascript:refreshUnavailable();">Obtém dados incompletos</button>
+
+		<script type="text/javascript">
+			function getKey(c) {
+				return c.origin + '-' + c.destination;
+			}
+
+			function refreshUnavailable() {
+				cells.forEach(function(c) {
+					var key = getKey(c);
+
+					if (typeof getData(key) == "string")
+						clearData(key);
+				});
+
+				reload(refreshCell, done);
+			}
+
+			function cidade(nome, pais, google, nomeLocal) {
+				if (nomeLocal !== undefined)
+					nomeLocal = nome;
+
+				return { nome: nome, pais: pais, google: google, nomeLocal: nomeLocal };
+			}
+
+			var cidades = [
+				cidade("Milão",      "Itália",     "Milano, Italia",    "Milano"    ),
+				cidade("Veneza",     "Itália",     "Venezia, Italia",   "Venezia"   ),
+				cidade("Mestre",     "Itália",     "Mestre, Italia"                 ),
+				cidade("Pádua",      "Itália",     "Padova, Italia",    "Padova"    ),
+				cidade("Pisa",       "Itália",     "Pisa, Italia"                   ),
+				cidade("Florença",   "Itália",     "Firenze, Italia",   "Firenze"   ),
+				cidade("San Marino", "San Marino", "Città di San Marino, San Marino"),
+				cidade("Assis",      "Itália",     "Assisi PG, Italia", "Assisi"    ),
+				cidade("Roma",       "Itália",     "Roma, Italia",      "Roma"      ),
+				cidade("Frascati",   "Itália",     "Frascati, Italia"               ),
+				cidade("Nápoles",    "Itália",     "Napoli, Italia",    "Napoli"    ),
+				cidade("Pompéia",    "Itália",     "Pompei, Italia",    "Pompei"    ),
+				cidade("Capri",      "Itália",     "Capri, Italia"                  ),
+				cidade("Sorrento",   "Itália",     "Sorrento, Italia"               ),
+				cidade("Amalfi",     "Itália",     "Amalfi SA, Italia"              ),
+				cidade("Salerno",    "Itália",     "Salerno, Italia"                ),
+				cidade("Bari",       "Itália",     "Bari, Italia"                   ),
+				cidade("Brindisi",   "Itália",     "Brindisi, Italia"               ),
+				cidade("Lecce",      "Itália",     "Lecce LE, Italia"               ),
+				// cidade("Patras",     "Grécia",     "Πάτρα, Ελλάδα",     "Πάτρα"     ),
+				// cidade("Atenas",     "Grécia",     "Αθήνα, Ελλάδα",     "Αθήνα"     ),
+				// cidade("Santorini",  "Grécia",     "Σαντορίνη, Ελλάδα", "Σαντορίνη" ),
+				// cidade("Mikonos",    "Grécia",     "Μύκονος, Ελλάδα",   "Μύκονος"   ),
+				// cidade("Éfeso",      "Turquia",    "Efes, Türkiye",     "Efes"      ),
+				// cidade("Istambul",   "Turquia",    "İstanbul, Türkiye", "İstanbul"  ),
+			];
+
+			function csssafeid(id) {
+				return id.replace(/ /g, '_').replace(/,/g, '_');
+			}
+
+			var cells = function buildTable() {
+				var distancias = $("table#distancias");
+				distancias.empty();
+
+				var header = $("<tr><th>&nbsp;</th></tr>").appendTo($("<thead></thead>").appendTo(distancias));
+
+				cidades.forEach(function(c, i) {
+					header.append('<th><span class="rotated-text"><span class="rotated-text__inner">' + c.nome + '</span></span></th>');
+				});
+
+				var cells = [];
+
+				cidades.forEach(function(c, i) {
+					var row = $("<tr></tr>").appendTo(distancias);
+					row.append("<td>" + c.nome + "</td>");
+
+					cidades.forEach(function(c2, i2) {
+						if (i == i2) {
+							row.append('<td class="vazio"></td>');
+						} else {
+							key = c.google + '-' + c2.google;
+							cells.push({
+								origin: c.google,
+								destination: c2.google,
+								target: $('<td id="' + csssafeid(key) + '"></td>').appendTo(row),
+							});
+						}
+					});
+				});
+
+				return cells;
+			}();
+
+			function getData(key) {
+				return JSON.parse(localStorage.getItem('distancias.' + key));
+			}
+
+			function clearData(key) {
+				localStorage.removeItem('distancias.' + key);
+			}
+
+			function setData(key, data) {
+				if (typeof data == "object")
+					data = { 
+						routes: [ 
+							{ 
+								legs: [ 
+									{
+										distance: { 
+											value: data.routes[0].legs[0].distance.value
+										},
+										duration: {
+											value: data.routes[0].legs[0].duration.value
+										}
+									}
+								]
+							}
+						]
+					};
+
+				localStorage.setItem('distancias.' + key, JSON.stringify(data));
+			}
+
+			cells.forEach(refreshCell);
+
+			function formatKm(km) {
+				return (km*10|0)/10 + 'km';
+			}
+
+			function formatMins(mins) {
+				var HH = mins / 60|0;
+				var MM = mins % 60;
+
+				if (HH > 0)				
+					return HH + 'h' + ('0' + MM).slice(-2) + 'min';
+				else
+					return MM + 'min';
+			}
+
+			function refreshCell(c) {
+				var key = getKey(c);
+				var r = getData(key);
+
+				if (r == null)
+					return;
+
+				c.target.empty();
+				if (typeof r == 'string') {
+					if (r == google.maps.DirectionsStatus.ZERO_RESULTS)
+						c.target.append('-');
+					else
+						c.target.append(r);
+				} else {
+					c.target.append(formatKm(r.routes[0].legs[0].distance.value/1000));
+					c.target.append('<br>');
+					c.target.append(formatMins(r.routes[0].legs[0].duration.value/60|0));
+				}
+			}
+
+			function done() {
+				var stats = cells.reduce(function(reduce, c) {
+					var key = getKey(c);
+					var r = getData(key);
+
+					if (r != null && r.hasOwnProperty("routes"))
+						reduce.push({ cell: c.target, value: r.routes[0].legs[0].distance.value/1000 });
+					
+					return reduce;
+				}, []);
+				
+				stats = stats.sort(function(a, b) {
+					return a.value - b.value;
+				});
+
+				stats.forEach(function(c, i) {
+					var red = 255;
+					var green = 255;
+					if (i < stats.length/2) {
+						red = ((i/(stats.length/2)) * 255)|0;
+					} else {
+						green = 255 - (((i-stats.length/2)/(stats.length/2)) * 255)|0;
+					}
+
+					c.cell.css({'background': 'rgb(' + red + ',' + green + ',0)'})
+				})
+			}
+
+			function reload(refreshCell, done) {
+				var directionsService = new google.maps.DirectionsService();
+				var queries = [];
+
+				cells.forEach(function(c) {
+					var key = getKey(c);
+					if (getData(key) == null)
+						queries.push(c);
+				});
+
+				var chain = queries.reduce(function(prev, c) {
+					var routeRequest = {
+						origin: c.origin,
+						destination: c.destination,
+						travelMode: google.maps.TravelMode.DRIVING,
+						// unitSystem: UnitSystem.METRIC,
+						provideRouteAlternatives: false,
+						avoidHighways: false,
+						avoidTolls: false,
+					};
+
+					c.target.empty().append('<div class="throbber"/>');
+
+					var key = getKey(c);
+
+					var thiz = function() {
+						directionsService.route(routeRequest, function(response, status) {
+							if (status == google.maps.DirectionsStatus.OVER_QUERY_LIMIT && thiz != null) {
+								setTimeout(thiz, 5000);
+								thiz = null;
+								return;
+							}
+
+							if (status == google.maps.DirectionsStatus.OK) {
+								setData(key, response);
+							} else {
+								setData(key, status);
+							}
+
+							refreshCell(c);
+							prev();
+						});
+					}
+
+					return thiz;
+				}, done);
+
+				chain();
+			}
+
+			reload(refreshCell, done);
+		</script>
+
+	</body>
+</html>

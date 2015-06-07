@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Aviso de Bagagem</title>
+		<script id="jquery" type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script id="constantes" type="text/javascript" src="constantes.js"></script>
+		<script id="roteiros" type="text/javascript" src="roteiros.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<style>
+			.page-break {
+				display: block;
+				page-break-before: always;
+			}
+
+			h1 { 
+				text-align: center;
+				margin-bottom: 5px;
+				margin-top: 5px;
+				white-space: nowrap;
+				letter-spacing: -2px;
+			}
+
+			table {
+				width: 100%;
+				border: 3px solid;
+				margin-top: 20px;
+				border-collapse: collapse;
+			}
+
+			table td, table th {
+				border: 1px solid;
+				padding: 10px;
+				white-space: nowrap;
+				font-weight: bolder;
+				position: relative;
+			}
+
+			table.ownership tr:nth-child(odd) td {
+				height: 4em;
+			}
+
+			table.ownership tr:nth-child(even) td {
+				height: 2em;
+			}
+
+			.email {
+				font-family: monospace;
+				font-size: 150%;
+				letter-spacing: +3px;
+			}
+
+			table.ownership td:last-child, table.ownership th:last-child {
+				color: blue;
+				border-color: blue;
+				width: 100%;
+				border-left: 3px solid;
+				border-right: 3px solid;
+			}
+
+			table.ownership th:last-child {
+				border-top: 3px solid;
+			}
+
+			table.ownership tr:last-child td:last-child {
+				border-bottom: 3px solid;
+			}
+			
+			.superscript {
+				vertical-align: super;
+				font-size: 70%;
+			}
+
+			.smaller {
+				font-size: 70%;
+				letter-spacing: -1px;
+			}
+
+			.slim {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.center {
+				text-align: center;
+			}
+
+			.bulletless {
+				list-style-type: none;
+			}
+
+			.fourcolumns {
+			   -webkit-column-count: 4;
+			      -moz-column-count: 4;
+			           column-count: 4;
+
+			   -webkit-column-gap: 10px;
+			      -moz-column-gap: 10px;
+			           column-gap: 10px;
+
+				-webkit-column-rule: dotted 1px gray;
+				   -moz-column-rule: dotted 1px gray;
+				        column-rule: dotted 1px gray;
+			}
+
+			.twocolumns {
+			   -webkit-column-count: 2;
+			      -moz-column-count: 2;
+			           column-count: 2;
+
+			   -webkit-column-gap: 10px;
+			      -moz-column-gap: 10px;
+			           column-gap: 10px;
+
+/*				-webkit-column-rule: dotted 1px gray;
+				   -moz-column-rule: dotted 1px gray;
+				        column-rule: dotted 1px gray;
+*/			}
+
+			.twocolumns tr {
+				break-before: column;
+				-moz-break-before: column;
+			}
+
+			.centerchildren > * {
+				text-align: center;
+			}
+
+			.email img {
+				width: 3em;
+				height: 3em;
+				margin-right: 15px;
+				vertical-align: middle;
+			}
+
+			.bolder {
+				font-weight: 900;
+			}
+
+			.thin {
+				font-weight: 100;
+			}
+
+			div.numberbox {
+				position: absolute;
+				top: -1px;
+				left: -1px;
+
+				background: #000 none repeat scroll 0% 0%;
+				color: #FFF;
+
+				margin: 0px;
+				padding-left: 8px;
+				padding-right: 8px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+
+				font-family: arial;
+				text-align: center;
+				font-weight: 900;
+				font-size: 110%;
+
+				vertical-align: middle;
+				line-height: 20px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="twocolumnss">
+			<h1>Caso esta bagagem seja extraviada</h1>
+			<h1>In case this luggage is lost</h1>
+			<h1>Nel caso in cui questo bagaglio è perso</h1>
+			<h1>Αν αυτή αποσκευές χάνονται</h1>
+			<h1>Bu bagaj kesilirse</h1>
+			<h1>Dans le cas où ce bagage est perdu</h1>
+			<h1>En caso de que se pierde esta equipaje</h1>
+			<h1>Falls dies Gepäck verloren geht</h1>
+		</div>
+
+		<table class="ownership">
+			<thead>
+				<tr>
+					<th colspan="3" rowspan="2" style="border: 0px;">
+						proprietário · owner · proprietario · ιδιοκτήτης · sahip · propriétaire · propietario · inhaber
+					</th>
+					<th style="border: 0px;"></th>
+				</tr>
+
+				<tr>
+					<th style="padding: 6px; letter-spacing: -2px; font-size: 80%; xborder-top: 3px solid;">
+						entre · between · tra · μεταξύ · arasında · zwischen<br>
+						4<span class="superscript">o · th · ème</span> agosto · august · agosto · αύγουστος · ağustos · août · agosto<br>
+						5<span class="superscript">o · th · ème</span> setembro · september · settembre · σεπτέμβριος · eylül · septembre · septiembre<br>
+					</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td style="padding-top: 30px;">
+						<div class="numberbox">1</div>
+						<div class="smaller slim" style="margin-bottom: 4px;">sra · mrs · sig.ra · κα<br>byn · mme · sra · fr</div>
+						Lemos, Maria Lúcia
+					</td>
+					<td class="email"><img src="ma.lucia.lemos@gmail.com.png">ma.lucia.lemos@gmail.com</td>
+					<td>
+						+55 21 999145550
+						<ul class="smaller center bulletless slim">
+							<li>fala português</li>
+						</ul>
+					</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td colspan="3">
+						<div class="smaller slim" style="margin-bottom: 4px;">endereço · address · indirizzo · διεύθυνση · adres · adresse · dirección · adresse</div>
+						Rua Lopes da Cruz, 368/101 - Méier - Rio de Janeiro/RJ - 20720-170<br>
+						Brasil · Brazil · Brasile · Βραζιλία · Brezilya · Brèsil · Brasil · Brasilien
+					</td>
+					<td><ul class="bulletless fourcolumns slim centerchildren smaller">
+						<li>vide verso</li>
+						<li>see back</li>
+						<li>vedi retro</li>
+						<li>συνοδεύω πίσω</li>
+						<li>geri bakın</li>
+						<li>voir au verso</li>
+						<li>ver atrás</li>
+						<li>siehe rückseite</li>
+					</ul></td>
+				</tr>
+
+				<tr>
+					<td style="padding-top: 30px;">
+						<div class="numberbox">2</div>
+						<div class="smaller slim" style="margin-bottom: 4px;">sr · mr · sig · κ<br>bey · m · sr · hr</div>
+						Lemos, Rodrigo
+					</td>
+					<td class="email"><img src="rslemos@gmail.com.png">rslemos@gmail.com</td>
+					<td>
+						+55 21 991060071
+						<ul class="smaller center bulletless slim">
+							<li>fala português</li>
+							<li>speaks english</li>
+							<li>habla español</li>
+							<li>spricht deutsch</li>
+						</ul>
+					</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td colspan="3">
+						<div class="smaller slim" style="margin-bottom: 4px;">endereço · address · indirizzo · διεύθυνση · adres · adresse · dirección · adresse</div>
+						Av. Oswaldo Cruz, 87/1708 - Flamengo - Rio de Janeiro/RJ - 22250-060<br>
+						Brasil · Brazil · Brasile · Βραζιλία · Brezilya · Brèsil · Brasil · Brasilien
+					</td>
+					<td><ul class="bulletless fourcolumns slim centerchildren smaller">
+						<li>vide verso</li>
+						<li>see back</li>
+						<li>vedi retro</li>
+						<li>συνοδεύω πίσω</li>
+						<li>geri bakın</li>
+						<li>voir au verso</li>
+						<li>ver atrás</li>
+						<li>siehe rückseite</li>
+					</ul></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table style="color: red; border: none; display: none;">
+			<tr>
+				<td style="border: none; padding: 0px;">
+					<table class="emergency">
+						<tbody>
+							<tr>
+								<td style="padding-top: 30px;">
+									<div class="numberbox" style="background: red;">1</div>
+									<div class="smaller slim" style="margin-bottom: 4px;">sra · mrs · sig.ra · κα<br>byn · mme · sra · fr</div>
+									Lemos, Leonora
+								</td>
+								<td class="email"><img src="">???</td>
+								<td>
+									+55 21 ????????
+									<ul class="smaller center bulletless slim">
+										<li>fala português</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td colspan="3">
+									<div class="smaller slim" style="margin-bottom: 4px;">endereço · address · indirizzo · διεύθυνση · adres · adresse · dirección · adresse</div>
+									Rua Lopes da Cruz, 368/101 - Méier - Rio de Janeiro/RJ - 20720-170<br>
+									Brasil · Brazil · Brasile · Βραζιλία · Brezilya · Brèsil · Brasil · Brasilien
+								</td>
+							</tr>
+
+							<tr>
+								<td style="padding-top: 30px;">
+									<div class="numberbox" style="background: red;">2</div>
+									<div class="smaller slim" style="margin-bottom: 4px;">sr · mr · sig · κ<br>bey · m · sr · hr</div>
+									Lemos, Eduardo
+								</td>
+								<td class="email"><img src="dulemos@gmail.com.png">dulemos@gmail.com</td>
+								<td>
+									+55 21 ?????????
+									<ul class="smaller center bulletless slim">
+										<li>fala português</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td colspan="3">
+									<div class="smaller slim" style="margin-bottom: 4px;">endereço · address · indirizzo · διεύθυνση · adres · adresse · dirección · adresse</div>
+									?<br>
+									Brasil · Brazil · Brasile · Βραζιλία · Brezilya · Brèsil · Brasil · Brasilien
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+
+				<td style="border: none; padding: 0px;">
+					<h1>Em caso de emergência</h1>
+					<h1>In case of emergency</h1>
+					<h1>In caso di emergenza</h1>
+					<h1>Σε περιπτωση αναγκης</h1>
+					<h1>Acil bir durumda</h1>
+					<h1>En cas d'urgence</h1>
+					<h1>En caso de emergencia</h1>
+					<h1>Im Notfall</h1>
+				</td>
+			</tr>
+		</table>
+
+		<div class="page-break"></div>
+
+		<div id="roteiro" style="position: relative;" class="twocolumnss"></div>
+
+		<script type="text/javascript">
+			// firefox cannot display anything other than current user timezone; so everything must be converted
+			var currentTimezoneOffset = -new Date().getTimezoneOffset();
+			Date.prototype.getLocalTimeFor = function(timezoneOffset) {
+				return new Date(this.getTime() + (timezoneOffset - currentTimezoneOffset)*(60*1000));
+			}
+
+			var div = $('div#roteiro');
+
+			var metadata = '<tr><th style="width: 30%;" colspan="2">Quando? · When? · Quando? · Πότε? · Ne Zaman? · Quand? · Cuando? · Wann?<div class="smaller slim">entre · between · tra · μεταξύ · arasında · zwischen</div></th>' + 
+			'<th style="width: 70%;" colspan="2">Onde? · Where? · Dove? · Που? · Nerede? · Où? · Dónde? · Wo?</th><tr>';
+
+			// <tfoot>' + metadata + '</tfoot>
+			var table = $('<table><thead>' + metadata + '</thead><tbody></tbody></table>');
+			div.append(table);
+
+			var tbody = table.children('tbody');
+
+			var tour = roteiro;
+			var w = rio_de_janeiro;
+			for(var i=0; i<tour.length; i++) {
+				tour[i].depart = tour[i].departUTC.getLocalTimeFor(w.timezoneOffset);
+
+				w = tour[i].bound[0];
+				tour[i].arrival = tour[i].arrivalUTC.getLocalTimeFor(w.timezoneOffset);
+			}
+
+			var prototype = $('<tr><td></td><td></td><td style="border-right: none; padding-top: 29px;"></td><td style="border-left: none; padding-top: 29px;"></td></tr>');
+
+			var ordinalprototype = [
+				$('<span class="superscript">o · st · ère</span>'),
+				$('<span class="superscript">o · nd · ème</span>'),
+				$('<span class="superscript">o · rd · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · st · ème</span>'),
+				$('<span class="superscript">o · nd · ème</span>'),
+				$('<span class="superscript">o · rd · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · th · ème</span>'),
+				$('<span class="superscript">o · st · ème</span>')
+			];
+
+
+			var monthprototype = [
+				$('<ul class="fourcolumns slim bulletless smaller center"><li>agosto</li><li>august</li><li>agosto</li><li>αύγουστος</li><li>ağustos</li><li>août</li><li>agosto</li><li>august</li></ul>'),
+				$('<ul class="fourcolumns slim bulletless smaller center"><li>setembro</li><li>september</li><li>settembre</li><li>σεπτέμβριος</li><li>eylül</li><li>septembre</li><li>september</li></ul>')
+			];
+
+			function fillDate(e, date) {
+				e
+					.append('<div class="numberbox">' + date.getDate() + '</div>')
+					// .append(ordinalprototype[date.getDate() - 1].clone())
+					// .append('<br>')
+					.append(monthprototype[date.getMonth()-7].clone());
+				;
+
+			}
+			for(var i=0; i<tour.length; i++) {
+				if (tour[i].hasOwnProperty('lodging')) {
+					var newline = prototype.clone().appendTo(tbody);
+
+					fillDate(newline.children('td:nth-child(1)'), tour[i].arrival);
+					fillDate(newline.children('td:nth-child(2)'), tour[i+1].depart);
+
+					newline.children('td:nth-child(3)')
+						.append('<div class="bolder numberbox">' + tour[i].lodging.property.name + '</div>')
+						.append('<div class="smaller" style="margin-top: 4px;">' + tour[i].lodging.property.address.join('<br>') + '</div>')
+						.append('<div class="smaller" style="margin-top: 4px;">✉ ' + tour[i].lodging.property.zip + ' · ☏ ' + tour[i].lodging.property.phones[0] + '</div>')
+					;
+
+
+
+					// var ul = $('<ul class="fourcolumns slim smaller bulletless"></ul>')
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append(tour[i].lodging.property.city.names.join(' · '))
+					;
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append(tour[i].lodging.property.city.country.names.join(' · '))
+					;
+					// for(var j=0; j<tour[i].lodging.property.city.names.length; j++) {
+					// 	ul.append('<li>' + tour[i].lodging.property.city.names[j] + '</li>');
+					// }
+				}
+			}
+		</script>
+	</body>
+</html>

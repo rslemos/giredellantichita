@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Roteiro</title>
+		<script id="jquery" type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script id="constantes" type="text/javascript" src="constantes.js"></script>
+		<script id="roteiros" type="text/javascript" src="roteiros.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<style>
+			.page-break {
+				display: block;
+				page-break-before: always;
+			}
+
+			h1 { 
+				text-align: center;
+				margin-bottom: 5px;
+				margin-top: 5px;
+				white-space: nowrap;
+				letter-spacing: -2px;
+			}
+
+			table {
+				width: 100%;
+				border: 3px solid;
+				margin-top: 20px;
+				border-collapse: collapse;
+			}
+
+			table td, table th {
+				border: 1px solid;
+				padding: 10px;
+				white-space: nowrap;
+				font-weight: bolder;
+				position: relative;
+			}
+
+			.email {
+				font-family: monospace;
+				font-size: 150%;
+				letter-spacing: +3px;
+			}
+			
+			.superscript {
+				vertical-align: super;
+				font-size: 70%;
+			}
+
+			.smaller {
+				font-size: 70%;
+				letter-spacing: -1px;
+			}
+
+			.slim {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.center {
+				text-align: center;
+			}
+
+			.bulletless {
+				list-style-type: none;
+			}
+
+			.fourcolumns {
+			   -webkit-column-count: 4;
+			      -moz-column-count: 4;
+			           column-count: 4;
+
+			   -webkit-column-gap: 10px;
+			      -moz-column-gap: 10px;
+			           column-gap: 10px;
+
+				-webkit-column-rule: dotted 1px gray;
+				   -moz-column-rule: dotted 1px gray;
+				        column-rule: dotted 1px gray;
+			}
+
+			.twocolumns {
+			   -webkit-column-count: 2;
+			      -moz-column-count: 2;
+			           column-count: 2;
+
+			   -webkit-column-gap: 10px;
+			      -moz-column-gap: 10px;
+			           column-gap: 10px;
+
+/*				-webkit-column-rule: dotted 1px gray;
+				   -moz-column-rule: dotted 1px gray;
+				        column-rule: dotted 1px gray;
+*/			}
+
+			.twocolumns tr {
+				break-before: column;
+				-moz-break-before: column;
+			}
+
+			.centerchildren > * {
+				text-align: center;
+			}
+
+			.email img {
+				width: 3em;
+				height: 3em;
+				margin-right: 15px;
+				vertical-align: middle;
+			}
+
+			.bolder {
+				font-weight: 900;
+			}
+
+			.thin {
+				font-weight: 100;
+			}
+
+			div.numberbox {
+				position: absolute;
+				top: -1px;
+				left: -1px;
+
+				background: #000 none repeat scroll 0% 0%;
+				color: #FFF;
+
+				margin: 0px;
+				padding-left: 8px;
+				padding-right: 8px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+
+				font-family: arial;
+				text-align: center;
+				font-weight: 900;
+				font-size: 110%;
+
+				vertical-align: middle;
+				line-height: 20px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="roteiro" style="position: relative;" class="twocolumnss"></div>
+
+		<script type="text/javascript">
+			// firefox cannot display anything other than current user timezone; so everything must be converted
+			var currentTimezoneOffset = -new Date().getTimezoneOffset();
+			Date.prototype.getLocalTimeFor = function(timezoneOffset) {
+				return new Date(this.getTime() + (timezoneOffset - currentTimezoneOffset)*(60*1000));
+			}
+
+			var timeFormatter = new Intl.DateTimeFormat('pt-BR', {hour: '2-digit', minute: '2-digit' });
+
+			var div = $('div#roteiro');
+
+			var metadata = '<tr><th colspan="2">Quando?</th><th colspan="2">Onde?</th><tr>';
+
+			// <tfoot>' + metadata + '</tfoot>
+			var table = $('<table style="width: auto"><!-- thead>' + metadata + '</thead --><tbody></tbody></table>');
+			div.append(table);
+
+			var tbody = table.children('tbody');
+
+			var tour = roteiro;
+			var w = rio_de_janeiro;
+			for(var i=0; i<tour.length; i++) {
+				tour[i].depart = tour[i].departUTC.getLocalTimeFor(w.timezoneOffset);
+
+				w = tour[i].bound[0];
+				tour[i].arrival = tour[i].arrivalUTC.getLocalTimeFor(w.timezoneOffset);
+			}
+
+			var prototype = $('<tr><td></td><td></td><td style="border-right: none; padding-top: 29px;"></td><td style="border-left: none; padding-top: 29px;"></td></tr>');
+
+			var monthprototype = [
+				'agosto',
+				'setembro'
+			];
+
+			function fillDate(e, date) {
+				e
+					.append('<div class="numberbox">' + date.getDate() + ' de ' + monthprototype[date.getMonth()-7] + '</div>')
+					// .append(ordinalprototype[date.getDate() - 1].clone())
+					// .append('<br>')
+					//.append(monthprototype[date.getMonth()-7].clone());
+				;
+
+			}
+			for(var i=0; i<tour.length; i++) {
+				if (tour[i].by.hasOwnProperty('airline')) {
+					var by_air = tour[i].by;
+
+					var newline = prototype.clone().appendTo(tbody);
+					fillDate(newline.children('td:nth-child(1)'), by_air.depart.utc);
+					fillDate(newline.children('td:nth-child(2)'), by_air.arrival.utc);
+
+					newline.children('td:nth-child(1)').append('<div class="slim" style="margin-top: 20px">' + timeFormatter.format(by_air.depart.utc) + '<span class="smaller"> (horário de Brasília)</span></div>');
+					
+//					newline.children('td:nth-child(1)').append('<div class="slim" style="margin-top: 20px">' + timeFormatter.format(by_air.depart.utc.getLocalTimeFor(by_air.depart.at.timezoneOffset)) + '<span class="smaller"> (horário local)</span></div>');
+
+					newline.children('td:nth-child(2)').append('<div class="slim" style="margin-top: 20px">' + timeFormatter.format(by_air.arrival.utc) + '<span class="smaller"> (horário de Brasília)</span></div>');
+
+//					newline.children('td:nth-child(2)').append('<div class="slim" style="margin-top: 20px">' + timeFormatter.format(by_air.arrival.utc.getLocalTimeFor(by_air.arrival.at.timezoneOffset)) + '<span class="smaller"> (horário local)</span></div>');
+
+					newline.children('td:nth-child(3)')
+						.append('<div class="bolder numberbox">' + by_air.airline + ' ' + by_air.flight + '</div>')
+
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append('De: ')
+						.append(by_air.depart.at.name)
+						.append(' · ')
+						.append(by_air.depart.at.country.names[0])
+						.append(by_air.depart.at.timezoneOffset == rio_de_janeiro.timezoneOffset ? '' : '  <span class="smaller">(+' + (by_air.depart.at.timezoneOffset - rio_de_janeiro.timezoneOffset)/60 + 'h)</span>')
+					;
+
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append('Para: ')
+						.append(by_air.arrival.at.name)
+						.append(' · ')
+						.append(by_air.arrival.at.country.names[0])
+						.append(by_air.arrival.at.timezoneOffset == rio_de_janeiro.timezoneOffset ? '' : '  <span class="smaller">(+' + (by_air.arrival.at.timezoneOffset - rio_de_janeiro.timezoneOffset)/60 + 'h)</span>')
+					;
+				}
+				if (tour[i].hasOwnProperty('lodging')) {
+					var newline = prototype.clone().appendTo(tbody);
+
+					fillDate(newline.children('td:nth-child(1)'), tour[i].arrival);
+					fillDate(newline.children('td:nth-child(2)'), tour[i+1].depart);
+
+					newline.children('td:nth-child(3)')
+						.append('<div class="bolder numberbox">' + tour[i].lodging.property.name + '</div>')
+						.append('<div class="smaller" style="margin-top: 4px;">' + tour[i].lodging.property.address.join('<br>') + '</div>')
+						.append('<div class="smaller" style="margin-top: 4px;">☏ ' + tour[i].lodging.property.phones[0] + '</div>')
+						.append(tour[i].lodging.property.hasOwnProperty('email') ? ('<div class="smaller" style="margin-top: 4px;">✉ ' + tour[i].lodging.property.email + '</div>') : '')
+						.append('<div class="smaller" style="margin-top: 4px;"><a href="' + tour[i].lodging.property.url[0] + '">' + tour[i].lodging.property.url[0] + '</a></div>')
+					;
+
+					// var ul = $('<ul class="fourcolumns slim smaller bulletless"></ul>')
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append(tour[i].lodging.property.city.names[0])
+					;
+					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
+						.appendTo(newline.children('td:nth-child(4)'))
+						.append(tour[i].lodging.property.city.country.names[0])
+					;
+					// for(var j=0; j<tour[i].lodging.property.city.names.length; j++) {
+					// 	ul.append('<li>' + tour[i].lodging.property.city.names[j] + '</li>');
+					// }
+				} 
+			}
+		</script>
+	</body>
+</html>

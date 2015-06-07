@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# syntax: ./convert image col row saveas
+
+convert $1 -crop 33x33+$(($2*33))+$(($3*33)) +repage $4

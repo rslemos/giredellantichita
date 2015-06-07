@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Viagem à Itália em agosto/2015</title>
+		<script id="jquery" type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script id="googlemaps" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Do4ZMc5ZmwqE93ZWin8ONlJvkQ_-anM"></script>
+
+		<script id="suncalc" type="text/javascript" src="https://rawgit.com/mourner/suncalc/master/suncalc.js"></script>
+
+		<script id="tour" type="text/javascript" src="tour.js"></script>
+		<script id="constantes" type="text/javascript" src="constantes.js"></script>
+		<script id="roteiros" type="text/javascript" src="roteiros.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	
+	<body>
+		<h1>Roteiro <span style="font-size: 70%; font-weight: lighter; color: gray;">(grandes traslados)</span></h1>
+
+		<div id="roteiro" style="position: relative;">
+			<script type="text/javascript">
+				buildTourTable($('div#roteiro'), rio_de_janeiro, roteiro);
+			</script>
+		</div>
+	</body>
+</html>
