@@ -47,3 +47,66 @@ Conexões Diretas (partindo de GIG)
  * GIG-ZRH WK99² - 20:20 1+14:35 - 11h15 -  S     
  * ZRH-GIG WK98¹ - 12:15   19:15 - 12h00 -      S 
  * ZRH-GIG WK98² - 13:30   20:30 - 12h00 -  S     
+
+Preços (baselines para 1 cidade)
+--------------------------------
+* GIG-AMS-GIG
+  SEG 05/09/2016 a TER 27/09/2016: R$ 2.191 (ida DOM-QUA; retorno TER-QUA)
+* GIG-CDG-GIG
+  QUA 14/09/2016 a QUI 06/10/2016: R$ 2.491 (ida QUA-QUI; retorno DOM-SAB)
+* GIG-DXB-GIG
+  sem informação de preços no Google Flights
+* GIG-FCO-GIG
+  não verificado porque Roma é um destino não desejado
+* GIG-FRA-GIG
+  TER 30/08/2016 a QUI 22/09/2016: R$ 2.350 (ida TER)
+  aparentemente fica mais barato depois do meio de setembro
+* GIG-LHR-GIG
+  SEG 12/09/2016 a QUI 06/10/2016: R$ 4.078 (ida SEG; retorno ¬SAB, ¬SEG)
+  R$ 2.891 é a tarifa mais baixa (DOM 19/06/2016 a SEG 11/07/2016; não faz diferença o dia da semana); 4 meses de antecedência
+* GIG-LIS-GIG
+  QUI 08/09/2016 a SEX 30/09/2016: R$ 3.957 (ida ¬SEG)
+  R$ 2.596 é a tarifa mais baixa (TER 21/06/2016 a QUA 13/07/2016; não faz diferença o dia da semana); 4 meses de antecedência
+* GIG-MAD-GIG
+  QUI 01/09/2016 a SEX 23/09/2016: R$ 2.702 (qualquer dia)
+  (parece não haver tarifa mais baixa que essa)
+* GIG-OPO-GIG
+  DOM 28/08/2016 a QUA 21/09/2016: R$ 3.845
+  R$ 2.365 é a tarifa mais baixa (DOM 19/06/2016 a QUA 13/07/2016)
+* GIG-ZRH-GIG
+  SEX 02/09/2016 a SEG 26/09/2016: R$ 2.018
+  (parece não haver tarifa mais baixa que essa)
+
+Preços (baselines para 2 cidades)
+---------------------------------
+
+Codeshare por Aliança
+* GIG-AMS-CDG-GIG
+* GIG-CDG-AMS-GIG
+* GIG-LHR-MAD-GIG
+* GIG-MAD-LHR-GIG
+* GIG-FRA-ZRH-GIG
+  QUA 07/09/2016 a SEG 26/09/2016: R$ 2.509
+* GIG-ZRH-FRA-GIG
+  SEX 02/09/2016 a QUA 28/09/2016: R$ 2.432
+* GIG-FRA-LIS-GIG
+* GIG-LIS-FRA-GIG
+* GIG-FRA-OPO-GIG
+* GIG-OPO-FRA-GIG
+* GIG-ZRH-LIS-GIG
+* GIG-LIS-ZRH-GIG
+* GIG-ZRH-OPO-GIG
+* GIG-OPO-ZRH-GIG
+* GIG-LIS-OPO-GIG
+* GIG-OPO-LIS-GIG
+
+Codeshare por acordos bilaterais
+* GIG-LIS-DXB-GIG
+* GIG-DXB-LIS-GIG
+* GIG-OPO-DXB-GIG
+* GIG-DXB-OPO-GIG
+* GIG-AMS-ZRH-GIG
+* GIG-ZRH-AMS-GIG
+  R$ 19.586 
+* GIG-CDG-ZRH-GIG
+* GIG-ZRH-CDG-GIG
