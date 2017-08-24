@@ -11,8 +11,12 @@ var espanha = { names: ['Espanha'] };
 var rio_de_janeiro = { name: 'Rio de Janeiro', timezoneOffset: -180, coordinates: { latitude: -22.908, longitude: -43.196 }, country: brasil  };
 var amsterdam      = { name: 'Amsterdã',       timezoneOffset: +120, coordinates: { latitude: +52.367, longitude:  +4.9   }, country: holanda, names: ['Amsterdã'] };
 var moscou         = { name: 'Moscou',         timezoneOffset: +180, coordinates: { latitude: +55.750, longitude: +37.617 }, country: russia, names: ['Moscou'] };
+
+var novgorod       = { name: 'Veliky Novgorod',timezoneOffset: +180, coordinates: { latitude: +58.550, longitude: +31.267 }, country: russia, names: ['Veliky Novgorod'] };
+
 var petersburgo    = { name: 'São Petersburgo',timezoneOffset: +180, coordinates: { latitude: +59.950, longitude: +30.3   }, country: russia, names: ['São Petersburgo'] };
 var paris          = { name: 'Paris',          timezoneOffset: +120, coordinates: { latitude: +48.857, longitude:  +2.351 }, country: franca, names: ['Paris'] };
+
 
 
 var madri          = { name: 'Madri'         , timezoneOffset: +120, coordinates: { latitude: +40.383, longitude:  -3.717 }, country: espanha };
