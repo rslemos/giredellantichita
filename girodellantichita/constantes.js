@@ -1,10 +1,20 @@
 var brasil = { names: ['Brasil'] };
+var russia = { names: ['Rússia'] };
+var holanda = { names: ['Holanda'] };
+var franca = { names: ['França'] };
+
 var italia = { names: ['Itália', 'Italy', 'Italia', 'Ιταλία', 'İtalya', 'Italie', 'Italien']};
 var turquia = { names: ['Turquia', 'Turkey', 'Turchia', 'Τουρκία', 'Türkiye', 'Turquie', 'Turquía', 'Türkei']};
 var grecia = { names: ['Grécia', 'Greece', 'Grecia', 'Ελλάδα', 'Yunanistan', 'Grèce', 'Griechenland']};
 var espanha = { names: ['Espanha'] };
 
 var rio_de_janeiro = { name: 'Rio de Janeiro', timezoneOffset: -180, coordinates: { latitude: -22.908, longitude: -43.196 }, country: brasil  };
+var amsterdam      = { name: 'Amsterdã',       timezoneOffset: +120, coordinates: { latitude: +52.367, longitude:  +4.9   }, country: holanda, names: ['Amsterdã'] };
+var moscou         = { name: 'Moscou',         timezoneOffset: +180, coordinates: { latitude: +55.750, longitude: +37.617 }, country: russia, names: ['Moscou'] };
+var petersburgo    = { name: 'São Petersburgo',timezoneOffset: +180, coordinates: { latitude: +59.950, longitude: +30.3   }, country: russia, names: ['São Petersburgo'] };
+var paris          = { name: 'Paris',          timezoneOffset: +120, coordinates: { latitude: +48.857, longitude:  +2.351 }, country: franca, names: ['Paris'] };
+
+
 var madri          = { name: 'Madri'         , timezoneOffset: +120, coordinates: { latitude: +40.383, longitude:  -3.717 }, country: espanha };
 var fiumicino      = { name: 'Fiumicino'     , timezoneOffset: +120, coordinates: { latitude: +41.766, longitude: +12.233 }, country: italia , names: ['Fiumicino'] };
 var roma           = { name: 'Roma'          , timezoneOffset: +120, coordinates: { latitude: +41.9  , longitude: +12.5   }, country: italia , names: ['Roma', 'Rome', 'Ρώμη', 'Rom'] };

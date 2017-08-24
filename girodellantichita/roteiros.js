@@ -1,3 +1,146 @@
+var kl_706 = {
+	airline: 'KLM',
+	depart: {
+		utc: new Date('2017-08-24T21:55:00.000-03:00'),
+		at: rio_de_janeiro
+	},
+	arrival: {
+		utc: new Date('2017-08-25T14:20:00.000+02:00'),
+		at: amsterdam
+	},
+	flight: 'KL 706'
+};
+
+var kl_903 = {
+	airline: 'KLM',
+	depart: {
+		utc: new Date('2017-08-28T11:45:00.000+02:00'),
+		at: amsterdam
+	},
+	arrival: {
+		utc: new Date('2017-08-28T16:00:00.000+03:00'),
+		at: moscou
+	},
+	flight: 'KL 903'
+};
+
+var af_1465 = {
+	airline: 'Air France',
+	depart: {
+		utc: new Date('2017-09-12T14:35:00.000+03:00'),
+		at: petersburgo
+	},
+	arrival: {
+		utc: new Date('2017-09-12T17:00:00.000+02:00'),
+		at: paris
+	},
+	flight: 'AF 1465'
+};
+
+var af_442 = {
+	airline: 'Air France',
+	depart: {
+		utc: new Date('2017-09-16T22:30:00.000+02:00'),
+		at: paris
+	},
+	arrival: {
+		utc: new Date('2017-09-17T05:40:00.000-03:00'),
+		at: rio_de_janeiro
+	},
+	flight: 'AF 442'
+};
+
+var roteiro = [
+
+	{ departUTC : new Date('2017-08-24T21:55:00.000-03:00'),
+	  arrivalUTC: new Date('2017-08-25T14:20:00.000+02:00'), bound: [amsterdam],
+	  by: kl_706,
+	  lodging: {
+		property: {
+			name: 'Casa alugada',
+			url: ['https://www.airbnb.com/rooms/19604421'],
+			address: [
+				'Nieuwe Grachtje 52',
+				'Amsterdam, Noord-Holland 1011 VP'
+			],
+			city: amsterdam,
+			phones: [
+				'+31 6 45 86 22 44'
+			]
+		},
+		checkin: [new Date('20170825T14:00:00.000+02:00'), null],
+		checkout: [null, new Date('20170828T11:00:00.000+02:00')]
+	   }
+	},
+
+	{ departUTC : new Date('2017-08-28T11:45:00.000+02:00'),
+	  arrivalUTC: new Date('2017-08-28T16:00:00.000+03:00'), bound: [moscou],
+	  by: kl_903,
+	  lodging: {
+		property: {
+			name: 'Casa alugada',
+			url: ['https://www.airbnb.com/rooms/8186354'],
+			address: [
+				'Москва, город Москва 127051'
+			],
+			city: moscou,
+			phones: [
+				'+7 916 633-81-46'
+			]
+		},
+		checkin: [new Date('20170828T14:00:00.000+03:00'), null],
+		checkout: [null, new Date('20170904T12:00:00.000+03:00')]
+	   }
+	},
+	
+	{ departUTC : new Date('2017-08-06T23:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-08-07T09:00:00.000+03:00'), bound: [petersburgo],
+	  by: trem,
+	  lodging: {
+		property: {
+			name: 'Casa alugada',
+			url: ['https://www.airbnb.com/rooms/12736370'],
+			address: [
+				'neberezhnaya kanala Griboyedova, 14',
+				'Sankt-Peterburg, Saint Petersburg 191186'
+			],
+			city: petersburgo,
+			phones: [
+				'+7 931 592-34-42',
+				'+7 921 440-80-11'
+			]
+		},
+		checkin: [new Date('20170907T14:00:00.000+03:00'), null],
+		checkout: [null, new Date('20170912T11:00:00.000+03:00')]
+	   }
+	},
+
+	{ departUTC : new Date('2017-09-12T14:35:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-12T17:00:00.000+02:00'), bound: [paris],
+	  by: af_1465,
+	  lodging: {
+		property: {
+			name: 'Eiffel Petit Louvre',
+			url: [''],
+			address: [
+				'1 Rue De Lourmel, Paris, 15th arrondissement',
+				'75015, França'
+			],
+			city: paris,
+			phones: [
+				'+33 1 45 78 17 12'
+			]
+		},
+		checkin: [new Date('20170912T15:00:00.000+02:00'), null],
+		checkout: [null, new Date('20170916T12:00:00.000+02:00')]
+	   }
+	},
+
+	{ departUTC : new Date('2017-09-16T23:30:00.000+02:00'),
+	  arrivalUTC: new Date('2017-09-17T05:40:00.000-03:00'), bound: [rio_de_janeiro],
+	  by: af_442 },
+];
+
 var ib_6024 = {
 	airline: 'Iberia',
 	depart: {
@@ -102,7 +245,7 @@ var v7_1491 = {
 	flight: 'V7 1491'
 };
 
-var roteiro = [
+var roteiro_italia = [
 
 	{ departUTC : new Date('2015-08-03T18:40:00.000-03:00'),
 	  arrivalUTC: new Date('2015-08-04T09:40:00.000+02:00'), bound: [madri],

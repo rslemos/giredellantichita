@@ -173,6 +173,7 @@
 
 				w = tour[i].bound[0];
 				tour[i].arrival = tour[i].arrivalUTC.getLocalTimeFor(w.timezoneOffset);
+				console.log(tour[i]);
 			}
 
 			var prototype = $('<tr><td></td><td></td><td style="border-right: none; padding-top: 29px;"></td><td style="border-left: none; padding-top: 29px;"></td></tr>');
@@ -241,7 +242,7 @@
 						.append(tour[i].lodging.property.hasOwnProperty('email') ? ('<div class="smaller" style="margin-top: 4px;">✉ ' + tour[i].lodging.property.email + '</div>') : '')
 						.append('<div class="smaller" style="margin-top: 4px;"><a href="' + tour[i].lodging.property.url[0] + '">' + tour[i].lodging.property.url[0] + '</a></div>')
 					;
-
+					console.log(tour[i].lodging);
 					// var ul = $('<ul class="fourcolumns slim smaller bulletless"></ul>')
 					$('<div class="slim" style="letter-spacing: -1px; font-size: 90%;"></div>')
 						.appendTo(newline.children('td:nth-child(4)'))
