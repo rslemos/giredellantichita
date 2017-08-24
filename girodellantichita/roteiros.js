@@ -81,6 +81,8 @@ var roteiro = [
 			name: 'Casa alugada',
 			url: ['https://www.airbnb.com/rooms/8186354'],
 			address: [
+				'1st Kolobovsky 15/6',
+				'(Первый Колобовский Переулок 15/6)',
 				'Москва, город Москва 127051'
 			],
 			city: moscou,
@@ -121,7 +123,7 @@ var roteiro = [
 	  lodging: {
 		property: {
 			name: 'Eiffel Petit Louvre',
-			url: [''],
+			url: ['http://hotel-paris-petitlouvre.com/'],
 			address: [
 				'1 Rue De Lourmel, Paris, 15th arrondissement',
 				'75015, França'
