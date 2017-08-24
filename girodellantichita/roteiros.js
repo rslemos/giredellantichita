@@ -95,6 +95,63 @@ var roteiro = [
 	   }
 	},
 	
+	{ departUTC : new Date('2017-09-04T08:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-04T10:00:00.000+03:00'), bound: [sergievposad],
+	  by: carro
+	},
+
+	{ departUTC : new Date('2017-09-04T13:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-04T13:30:00.000+03:00'), bound: [rostov],
+	  by: carro
+	},
+
+	{ departUTC : new Date('2017-09-04T19:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-04T19:30:00.000+03:00'), bound: [yaroslav],
+	  by: carro,
+	  lodging: {
+		property: {
+			name: 'Hotel',
+			city: yaroslav,
+			address: [],
+			phones: [''],
+			url: ['']
+		},
+		checkin: [new Date('20170904T19:30:00.000+03:00'), null],
+		checkout: [null, new Date('20170905T08:00:00.000+03:00')]
+	  }
+	},
+
+	{ departUTC : new Date('2017-09-05T12:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-05T13:30:00.000+03:00'), bound: [kostroma],
+	  by: carro
+	},
+
+	{ departUTC : new Date('2017-09-05T19:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-05T22:00:00.000+03:00'), bound: [suzdal],
+	  by: carro,
+	  lodging: {
+		property: {
+			name: 'Hotel',
+			city: suzdal,
+			address: [],
+			phones: [''],
+			url: ['']
+		},
+		checkin: [new Date('20170905T22:00:00.000+03:00'), null],
+		checkout: [null, new Date('20170906T08:00:00.000+03:00')]
+	  }
+	},
+
+	{ departUTC : new Date('2017-09-06T12:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-06T12:00:00.000+03:00'), bound: [vladimir],
+	  by: carro
+	},
+
+	{ departUTC : new Date('2017-09-06T16:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-06T19:00:00.000+03:00'), bound: [moscou],
+	  by: trem,
+	},
+
 	{ departUTC : new Date('2017-09-06T23:00:00.000+03:00'),
 	  arrivalUTC: new Date('2017-09-07T09:00:00.000+03:00'), bound: [petersburgo],
 	  by: trem,

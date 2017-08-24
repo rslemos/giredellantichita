@@ -14,6 +14,13 @@ var moscou         = { name: 'Moscou',         timezoneOffset: +180, coordinates
 
 var novgorod       = { name: 'Veliky Novgorod',timezoneOffset: +180, coordinates: { latitude: +58.550, longitude: +31.267 }, country: russia, names: ['Veliky Novgorod'] };
 
+var sergievposad   = { name: 'Sergiev Posad',  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Sergiev Posad'] };
+var rostov         = { name: 'Rostov'       ,  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Rostov'] };
+var yaroslav       = { name: 'Yaroslav'     ,  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Yaroslav'] };
+var kostroma       = { name: 'Kostroma'     ,  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Kostroma'] };
+var suzdal         = { name: 'Suzdal'       ,  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Suzdal'] };
+var vladimir       = { name: 'Vladimir'     ,  timezoneOffset: +180, coordinates: {                                       }, country: russia, names: ['Vladimir'] };
+
 var petersburgo    = { name: 'São Petersburgo',timezoneOffset: +180, coordinates: { latitude: +59.950, longitude: +30.3   }, country: russia, names: ['São Petersburgo'] };
 var paris          = { name: 'Paris',          timezoneOffset: +120, coordinates: { latitude: +48.857, longitude:  +2.351 }, country: franca, names: ['Paris'] };
 
