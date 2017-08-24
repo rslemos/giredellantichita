@@ -93,8 +93,8 @@ var roteiro = [
 	   }
 	},
 	
-	{ departUTC : new Date('2017-08-06T23:00:00.000+03:00'),
-	  arrivalUTC: new Date('2017-08-07T09:00:00.000+03:00'), bound: [petersburgo],
+	{ departUTC : new Date('2017-09-06T23:00:00.000+03:00'),
+	  arrivalUTC: new Date('2017-09-07T09:00:00.000+03:00'), bound: [petersburgo],
 	  by: trem,
 	  lodging: {
 		property: {
